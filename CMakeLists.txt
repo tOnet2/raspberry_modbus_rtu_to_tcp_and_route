@@ -15,6 +15,10 @@ set (SRC
 	src/config/tcp.h
 	src/main.cpp
 	src/main.h
+	src/daemon.h
+	src/daemon.cpp
+	src/logging.h
+	src/logging.cpp
 )
 
 add_executable (exe ${SRC})
