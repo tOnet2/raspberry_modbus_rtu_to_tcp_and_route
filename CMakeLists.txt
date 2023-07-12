@@ -11,14 +11,23 @@ project (rspberry_modbus_rtu_to_tcp_and_route
 	LANGUAGES CXX)
 
 set (SRC
-	src/config/uart.h
-	src/config/tcp.h
+	src/config/open_uart.h
+	src/config/open_tcp.h
+	src/config/route_rules.h
 	src/main.cpp
 	src/main.h
 	src/daemon.h
 	src/daemon.cpp
 	src/logging.h
 	src/logging.cpp
+	src/tty_settings.cpp
+	src/tty_settings.h
+	src/crc.cpp
+	src/crc.h
+	src/MainTcp.cpp
+	src/MainTcp.h
+	src/MainUart.cpp
+	src/MainUart.h
 )
 
-add_executable (exe ${SRC})
+add_executable (exe ${SRC} "src/check_errors.cpp")

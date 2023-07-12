@@ -57,13 +57,13 @@ uint16_t modbus_crc16(const unsigned char * buf, ssize_t len)
     return (crc_hi << 8 | crc_lo);
 }
 
-uint8_t check_crc(const unsigned char * buf, ssize_t len)
+bool check_crc(const unsigned char * buf, ssize_t len)
 {
 	uint16_t crc = modbus_crc16(buf, len - 2);
 	uint8_t lo = *(buf + len - 2);
 	uint8_t hi = *(buf + len - 1);
     uint8_t crc_from_buf = (hi << 8) + lo;
 	if (crc_from_buf != crc)
-		return 0;
-	return 1;
+		return false;
+	return true;
 }
