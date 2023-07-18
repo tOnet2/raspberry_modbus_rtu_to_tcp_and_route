@@ -14,7 +14,7 @@ GeneralUart::~GeneralUart()
 void GeneralUart::ReadGeneralUart()
 {
 	r_return = SysCalls::Read(ud, buf, GENERALUART_BUF_LEN);
-	if (!Crc::CheckCrc((const unsigned char*)buf, r_return)) {
+	if (!Crc::CheckCrc((const unsigned char*)buf, r_return - 2)) {
 		ZeroBuf();
 		SysCalls::Write(ud, "Invalid CRC", 11);
 	}
