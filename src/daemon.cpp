@@ -13,5 +13,5 @@ void Daemon::InitProcessAsDaemonAndOpenLog()
 	setsid();
 	if (fork() > 0)
 		exit(1);
-	init_syslog();
+	Logging::InitSyslog();
 }

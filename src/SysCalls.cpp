@@ -41,26 +41,26 @@ void SysCalls::Connect(int32_t sock, const char * ip, uint16_t port)
 	Logging::SyslogInfo("Connection to the ModBus TCP is established");
 }
 
-ssize_t SysCalls::Read(int32_t fd, unsigned char *buf, ssize_t buf_len)
+ssize_t SysCalls::Read(int32_t fd, uint8_t* buf, ssize_t buf_len)
 {
 	ssize_t rr = read(fd, buf, (size_t)buf_len);
 	CheckErrors::CheckLessZeroCritError(rr, "Read: ");
 	return rr;
 }
 
-void SysCalls::Write(int32_t fd, const unsigned char *buf, ssize_t len)
+void SysCalls::Write(int32_t fd, const char *buf, ssize_t len)
 {
 	ssize_t wr = write(fd, buf, (size_t)len);
 	CheckErrors::CheckLessZeroCritError(wr, "Write: ");
 }
 
-void SysCalls::Send(int32_t s, const unsigned char *buf, ssize_t len)
+void SysCalls::Send(int32_t s, const uint8_t* buf, ssize_t len)
 {
-	ssize_t sr = send(s, buf, (size_t)len, 0);
+	ssize_t sr = send(s, (const uint8_t*)buf, (size_t)len, 0);
 	CheckErrors::CheckLessZeroCritError(sr, "Send: ");
 }
 
-ssize_t SysCalls::Recv(int32_t s, unsigned char *buf, ssize_t buf_len)
+ssize_t SysCalls::Recv(int32_t s, uint8_t* buf, ssize_t buf_len)
 {
 	ssize_t rr = recv(s, buf, (size_t)buf_len, 0);
 	CheckErrors::CheckLessZeroCritError(rr, "Recv: ");

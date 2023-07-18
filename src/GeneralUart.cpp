@@ -22,7 +22,7 @@ void GeneralUart::ReadGeneralUart()
 
 void GeneralUart::WriteGeneralUart(const uint8_t* data, ssize_t data_len)
 {
-	SysCalls::Write(ud, data, data_len);
+	SysCalls::Write(ud, (const char*)data, data_len);
 }
 
 uint8_t* GeneralUart::ConvertRtuToTcp()

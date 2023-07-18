@@ -21,5 +21,5 @@ void Logging::SyslogInfo2(const char* mes1, const char* mes2)
 
 void Logging::SyslogCrit(const char* mes1, const char* mes2)
 {
-	syslog(LOG_CRIT, "%s: %s", mes, err);
+	syslog(LOG_CRIT, "%s: %s", mes1, mes2);
 }

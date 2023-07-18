@@ -18,10 +18,10 @@ public:
 	static int32_t Open_tty(const char* tty, speed_t baud);
 	static int32_t Inet_stream_socket();
 	static void Connect(int32_t sock, const char* ip, uint16_t port);
-	static ssize_t Read(int32_t fd, unsigned char* buf, ssize_t buf_len);
-	static void Write(int32_t fd, const unsigned char* buf, ssize_t len);
-	static void Send(int32_t s, const unsigned char* buf, ssize_t len);
-	static ssize_t Recv(int32_t s, unsigned char* buf, ssize_t buf_len);
+	static ssize_t Read(int32_t fd, uint8_t* buf, ssize_t buf_len);
+	static void Write(int32_t fd, const char* buf, ssize_t len);
+	static void Send(int32_t s, const uint8_t* buf, ssize_t len);
+	static ssize_t Recv(int32_t s, uint8_t* buf, ssize_t buf_len);
 };
 
 #endif

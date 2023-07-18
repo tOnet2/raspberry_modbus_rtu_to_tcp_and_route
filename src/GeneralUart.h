@@ -1,8 +1,6 @@
 #ifndef GENERALUART_H_SENTRY
 #define GENERALUART_H_SENTRY
 
-#define GENERALUART_BUF_LEN 250
-
 #include <inttypes.h>
 #include "SysCalls.h"
 #include "config/open_uart.h"

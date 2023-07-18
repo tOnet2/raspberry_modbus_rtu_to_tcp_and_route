@@ -1,6 +1,6 @@
-#include "MainTcp.h"
+#include "GeneralTcp.h"
 
-MainTcp::MainTcp()
+GeneralTcp::GeneralTcp()
 {
 	/* new socket */
 	sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -22,12 +22,12 @@ MainTcp::MainTcp()
 	simple_syslog_info_mes("Connection to the ModBus TCP is established");
 }
 
-MainTcp::~MainTcp()
+GeneralTcp::~GeneralTcp()
 {
 	close(sock);
 }
 
-void MainTcp::ConvertUartToTcp(const char* uart, ssize_t uart_len)
+void GeneralTcp::ConvertUartToTcp(const char* uart, ssize_t uart_len)
 {
 	if (tcp_len >= 0 && tcp_len <= 200)
 		memset(buf, 0, tcp_len);
@@ -42,14 +42,4 @@ void MainTcp::ConvertUartToTcp(const char* uart, ssize_t uart_len)
 		memcpy(buf + 6, uart, buf[5]);
 	else
 		simple_syslog_info_mes("Big pocket from uart!");
-}
-
-ssize_t MainTcp::Send()
-{
-
-}
-
-ssize_t MainTcp::Recv()
-{
-
 }
