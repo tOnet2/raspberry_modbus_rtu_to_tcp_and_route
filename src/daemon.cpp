@@ -1,6 +1,6 @@
-#include "daemon.h"
+#include "Daemon.h"
 
-void init_process_as_daemon_and_openlog()
+void Daemon::InitProcessAsDaemonAndOpenLog()
 {
 	close(0);
 	close(1);

@@ -1,6 +1,6 @@
-#include "tty_settings.h"
+#include "TtySettings.h"
 
-void set_tty_as_uart(int32_t fd, speed_t baud)
+void TtySettings::SetTtyAsUart(int32_t fd, speed_t baud)
 {
 	struct termios old_p;
 	struct termios new_p;

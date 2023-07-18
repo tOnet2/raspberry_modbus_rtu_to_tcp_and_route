@@ -3,9 +3,12 @@
 
 #include <syslog.h>
 
-void init_syslog();
-void simple_syslog_info_mes(const char* mes);
-void syslog_info_mes(const char* mes1, const char* mes2);
-void syslog_crit_mes(const char* mes, const char* err);
+class Logging {
+public:
+	static void InitSyslog();
+	static void SyslogInfo(const char* mes);
+	static void SyslogInfo2(const char* mes1, const char* mes2);
+	static void SyslogCrit(const char* mes, const char* err);
+};
 
 #endif

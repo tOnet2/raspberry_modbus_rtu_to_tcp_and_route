@@ -5,8 +5,11 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "logging.h"
+#include "Logging.h"
 
-void init_process_as_daemon_and_openlog();
+class Daemon {
+public:
+	static void InitProcessAsDaemonAndOpenLog();
+};
 
 #endif

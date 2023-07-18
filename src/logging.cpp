@@ -1,22 +1,25 @@
-#include "logging.h"
+#include "Logging.h"
 
-void init_syslog()
+void Logging::InitSyslog()
 {
-	openlog("rp_mb_rtu-tcp_route", LOG_CONS | LOG_NDELAY | LOG_PID, LOG_DAEMON);
-	syslog(LOG_INFO, "The raspberry daemon ModBus rtu to tcp and router started");
+#ifndef ROUTER
+	openlog("modbus-rtu-to-tcp", LOG_CONS | LOG_NDELAY | LOG_PID, LOG_DAEMON);
+#else
+	openlog("modbus-rtu-to-tcp-plus-router", LOG_CONS | LOG_NDELAY | LOG_PID, LOG_DAEMON);
+#endif
 }
 
-void simple_syslog_info_mes(const char* mes)
+void Logging::SyslogInfo(const char* mes)
 {
 	syslog(LOG_INFO, "%s", mes);
 }
 
-void syslog_info_mes(const char* mes1, const char* mes2)
+void Logging::SyslogInfo2(const char* mes1, const char* mes2)
 {
-	syslog(LOG_INFO, "%s %s", mes1, mes2);
+	syslog(LOG_INFO, "%s: %s", mes1, mes2);
 }
 
-void syslog_crit_mes(const char* mes, const char* err)
+void Logging::SyslogCrit(const char* mes1, const char* mes2)
 {
-	syslog(LOG_CRIT, "%s %s", mes, err);
+	syslog(LOG_CRIT, "%s: %s", mes, err);
 }

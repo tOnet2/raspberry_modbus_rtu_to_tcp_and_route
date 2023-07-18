@@ -16,18 +16,24 @@ set (SRC
 	src/config/route_rules.h
 	src/main.cpp
 	src/main.h
-	src/daemon.h
-	src/daemon.cpp
-	src/logging.h
-	src/logging.cpp
-	src/tty_settings.cpp
-	src/tty_settings.h
-	src/crc.cpp
-	src/crc.h
-	src/MainTcp.cpp
-	src/MainTcp.h
-	src/MainUart.cpp
-	src/MainUart.h
+	src/Daemon.h
+	src/Daemon.cpp
+	src/Logging.h
+	src/Logging.cpp
+	src/TtySettings.cpp
+	src/TtySettings.h
+	src/Crc.cpp
+	src/Crc.h
+	src/GeneralTcp.cpp
+	src/GeneralTcp.h
+	src/GeneralUart.cpp
+	src/GeneralUart.h
+	src/SysCalls.cpp
+	src/SysCalls.h
+	src/TtySettings.cpp
+	src/TtySettings.h
+	src/CheckErrors.cpp
+	src/CheckErrors.h
 )
 
-add_executable (exe ${SRC} "src/check_errors.cpp")
+add_executable (exe ${SRC})

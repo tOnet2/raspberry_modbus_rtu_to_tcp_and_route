@@ -1,10 +1,10 @@
-#include "daemon.h"
-#define DAEMON 1
+#include "main.h"
+
 int main()
 {
-#if DAEMON
-	init_process_as_daemon_and_openlog();
+#ifdef DAEMON
+	Daemon::InitProcessAsDaemonAndOpenLog();
 #endif
-
+	GeneralUart* general_uart = new GeneralUart();
 	return 0;
 }
