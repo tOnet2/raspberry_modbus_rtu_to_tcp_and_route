@@ -9,3 +9,4 @@
 #ifdef ROUTER
 #include "config/route_rules.h"
 #endif
+#define A
