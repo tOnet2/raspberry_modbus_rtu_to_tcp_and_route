@@ -15,7 +15,7 @@ uint16_t Crc::ModbusCrc16(const unsigned char * buf, ssize_t len)
 
 bool Crc::CheckCrc(const unsigned char * buf, ssize_t len)
 {
-	uint16_t crc = modbus_crc16(buf, len - 2);
+	uint16_t crc = ModbusCrc16(buf, len - 2);
 	uint8_t lo = *(buf + len - 2);
 	uint8_t hi = *(buf + len - 1);
     uint8_t crc_from_buf = (hi << 8) + lo;
