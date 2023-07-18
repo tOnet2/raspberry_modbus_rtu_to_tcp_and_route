@@ -1,3 +1,4 @@
+#include <signal.h>
 #include "GeneralUart.h"
 #include "GeneralTcp.h"
 #ifdef DAEMON

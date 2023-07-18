@@ -1,5 +1,12 @@
 #include "main.h"
 
+static uint8_t hup = 0;
+
+void hup_handler(int32_t s)
+{
+	hup = 1;
+}
+
 int main()
 {
 #ifdef DAEMON
@@ -7,12 +14,13 @@ int main()
 #else
 	Logging::InitSyslog();
 #endif
+	signal(SIGHUP, hup_handler);
+reconfig:
 	GeneralUart* general_uart = new GeneralUart();
 	GeneralTcp*	 general_tcp  = new GeneralTcp();
-	uint8_t run = 1;
 	uint8_t* rtu_converted = 0;
 	uint8_t* tcp_converted = 0;
-	while (run)
+	while (1)
 	{
 		general_uart->ReadGeneralUart();
 #ifdef ROUTER
@@ -33,6 +41,11 @@ int main()
 			}
 			general_uart->ZeroBuf();
 			general_tcp->ZeroBuf();
+			if (hup) {
+				delete general_tcp;
+				delete general_uart;
+				goto reconfig;
+			}
 #ifdef ROUTER
 		}
 		else {

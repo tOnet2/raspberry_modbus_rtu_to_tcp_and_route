@@ -43,26 +43,26 @@ void SysCalls::Connect(int32_t sock, const char * ip, uint16_t port)
 
 ssize_t SysCalls::Read(int32_t fd, unsigned char *buf, ssize_t buf_len)
 {
-	ssize_t rr = read(fd, buf, buf_len);
+	ssize_t rr = read(fd, buf, (size_t)buf_len);
 	CheckErrors::CheckLessZeroCritError(rr, "Read: ");
 	return rr;
 }
 
 void SysCalls::Write(int32_t fd, const unsigned char *buf, ssize_t len)
 {
-	ssize_t wr = write(fd, buf, len);
+	ssize_t wr = write(fd, buf, (size_t)len);
 	CheckErrors::CheckLessZeroCritError(wr, "Write: ");
 }
 
 void SysCalls::Send(int32_t s, const unsigned char *buf, ssize_t len)
 {
-	ssize_t sr = send(s, buf, len, 0);
+	ssize_t sr = send(s, buf, (size_t)len, 0);
 	CheckErrors::CheckLessZeroCritError(sr, "Send: ");
 }
 
 ssize_t SysCalls::Recv(int32_t s, unsigned char *buf, ssize_t buf_len)
 {
-	ssize_t rr = recv(s, buf, buf_len, 0);
+	ssize_t rr = recv(s, buf, (size_t)buf_len, 0);
 	CheckErrors::CheckLessZeroCritError(rr, "Recv: ");
 	return rr;
 }

@@ -13,7 +13,7 @@ GeneralUart::~GeneralUart()
 
 void GeneralUart::ReadGeneralUart()
 {
-	SysCalls::Read(ud, buf, GENERAL_UART_BUF_LEN);
+	r_return = SysCalls::Read(ud, buf, GENERALUART_BUF_LEN);
 }
 
 void GeneralUart::WriteGeneralUart(const uint8_t* data, ssize_t data_len)
